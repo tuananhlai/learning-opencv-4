@@ -15,7 +15,7 @@ def create_descriptor(folder, image_path, feature_detector):
         print('skipping %s' % image_path)
         return
     print('reading %s' % image_path)
-    img = cv2.imread(os.path.join(folder, image_path, cv2.IMREAD_GRAYSCALE))
+    img = cv2.imread(os.path.join(folder, image_path), cv2.IMREAD_GRAYSCALE)
     keypoints, descriptors = feature_detector.detectAndCompute(img, None)
     descriptor_file = image_path.replace('png', 'npy')
     np.save(os.path.join(folder, descriptor_file), descriptors)
